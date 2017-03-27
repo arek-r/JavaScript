@@ -1,8 +1,10 @@
-var list = document.getElementById('list');
 var addElem = document.getElementById('addElem');
 
-var liCount = document.getElementsByTagName('li');
+var liCount = document.getElementsByTagName('li').length;
 
 addElem.addEventListener('click', function() {
-	list.innerHTML += '<li>item ' + liCount.length + '</li>';
+	var liElem = document.createElement('li');
+	var liText = document.createTextNode('item ' + liCount++);
+	liElem.appendChild(liText);
+	document.getElementById('list').appendChild(liElem);
 });
