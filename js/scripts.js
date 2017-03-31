@@ -79,22 +79,16 @@ function checkRoundWinner(playerPick, computerPick) {
 			(computerPick == 'kamień' && playerPick == 'nożyce') ||
 			(computerPick == 'nożyce' && playerPick == 'papier') ||
 			(computerPick == 'papier' && playerPick == 'kamień')) {
-		addPoint('computer');
+		updateBoard(computer, computerResultElem);
 	} else {
-		addPoint('player');
+		updateBoard(player, playerResultElem);
 	}
 }
 
-function addPoint(winner) {
-	if (winner == 'player') {
-		playerResultElem.innerHTML = 'Wygrana!';
-		player.score++;
-		playerPointsElem.innerHTML = player.score;
-	} else if (winner == 'computer') {
-		computerResultElem.innerHTML = 'Wygrana!';
-		computer.score++;
-		computerPointsElem.innerHTML = computer.score;
-	}
+function updateBoard(winner, winnerElem) {
+	winnerElem.innerHTML = 'Wygrana!';
+	winner.score++;
+	setGamePoints();
 }
 
 function setGamePoints() {
